@@ -1,0 +1,25 @@
+# I first downloaded year by year pitchers data from Statcast off the Baseball Savant website only focusing on fastballs
+# I then used the DPLYR package to add a column depicting the year each data sets represents
+
+X4_seam_fastball_2015 <- mutate(X4_seam_fastball_2015, year = 2015
+
+X4_seam_fastball_2016 <- mutate(X4_seam_fastball_2016, year = 2016)
+
+X4_seam_fastball_2017 <- mutate(X4_seam_fastball_2017, year = 2017)
+
+X4_seam_fastball_2018 <- mutate(X4_seam_fastball_2018, year = 2018)
+
+X4_seam_fastball_2019 <- mutate(X4_seam_fastball_2019, year = 2019)
+
+# I then bound the years into one dataframe and named it four_seam_fastball
+
+four_seam_fastball <- rbind(X4_seam_fastball_2015, X4_seam_fastball_2016, X4_seam_fastball_2017, X4_seam_fastball_2018, X4_seam_fastball_2019)
+
+# I used the GGPLOT2 package to create a graph showing the changes in velocity from year to year.
+
+MLB_Veloctiy <- ggplot(data = four_seam_fastball, mapping = aes(x = year, y = velocity,)) +
++     geom_smooth(method = "lm", col = "blue")
+
+# To finish I used the print() command to title the graph MLB Fastball Velocity Changes
+
+print(MLB_Veloctiy + ggtitle("MLB Fastball Velocity Changes"))
